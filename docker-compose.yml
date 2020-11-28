@@ -12,7 +12,8 @@ services:
     # command: mlflow server --host 0.0.0.0
 
   nginxauth:
-      depends_on: mlfserver
+      depends_on: 
+        - mlfserver
       restart: always
       build: ./nginxauth
       image: nginxauthformlflow
