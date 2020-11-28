@@ -37,7 +37,7 @@ To deploy locally, follow the steps below.
 Pick a username, here we use `incredibleuser`.
 Run
 ```
-htpasswd -c revproxy/.htpasswd incredibleuser
+htpasswd -c nginxauth/.htpasswd incredibleuser
 ```
 this will prompt you to enter a password.
 
