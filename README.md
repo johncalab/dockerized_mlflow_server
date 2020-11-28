@@ -5,12 +5,15 @@ A simple `docker-compose` app to easily deploy an `mlflow` server, together with
 
 Step-by-step instructions on how to deploy can be found at the bottom of this README.
 
-## What's in this repo?
+## what does this mean? (if you don't know what docker is...)
+The file `docker-compose.yml` tells `docker` what to do.
+If you open it, you will see two "services" specified: `mlflowui` and `nginxauth`.
+The `docker-compose.yml` is moreover telling docker to look into the `mlflowui` and `nginxauth` subdirectories (of this repo) to see the precise instructions to follow (which are contained in a file called `Dockerfile`).
 
+Here are a few more details about these (for people familiar with docker).
 
-## mlflowui
-The app consists of two services.
-The first is `mlflowui`, the mlflow server.
+### mlflowui
+The first service is `mlflowui`, the mlflow server.
 The corresponding dockerfile is pretty straightforward: use a python3 base image and install the necessary packages.
 In `docker-compose.yml` you'll find the entrypoint under `command`.
 This can be customized depending on your needs.
@@ -34,8 +37,7 @@ To use this service, we first need to create the `.htpasswd` file (see instructi
 To deploy locally, follow the steps below.
 
 ### Adding credentials
-Pick a username, here we use `incredibleuser`.
-Run
+Pick a username, here we use `incredibleuser`, and run:
 ```
 htpasswd -c nginxauth/.htpasswd incredibleuser
 ```

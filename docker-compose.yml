@@ -1,11 +1,5 @@
 version: '3.8'
 services:
-  nginxauth:
-      restart: always
-      build: ./nginxauth
-      image: nginxauthformlflow
-      ports:
-          - 80:80
 
   mlfserver:
     restart: always
@@ -16,3 +10,11 @@ services:
     command: mlflow server --host 0.0.0.0 --default-artifact-root ${DEFAULT_ARTIFACT_ROOT} --backend-store-uri ${BACKEND_STORE_URI}
     # to run with local backend and artifact store use below
     # command: mlflow server --host 0.0.0.0
+
+  nginxauth:
+      depends_on: mlfserver
+      restart: always
+      build: ./nginxauth
+      image: nginxauthformlflow
+      ports:
+          - 80:80
