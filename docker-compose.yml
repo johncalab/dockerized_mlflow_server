@@ -1,0 +1,19 @@
+version: '3.8'
+services:
+  nginxauth:
+      # restart: always
+      build: ./nginxauth
+      image: nginxauthformlflow
+      ports:
+          - 80:80
+
+  mlfserver:
+    # restart: always
+    build: ./mlflowui
+    image: mlflowui
+    expose:
+      - 5000
+    command: mlflow server --host 0.0.0.0
+    # to run with local backend and artifact store
+    # NOTE: for your experiment data to persist you should add a volume
+    # command: mlflow server --host 0.0.0.0
