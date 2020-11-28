@@ -1,7 +1,7 @@
 Work in progress...
 
 # Dockerized mlflow server with authentication
-A simple docker-compose app to easily deploy an `mlflow` server, together with an nginx reverse proxy for authentication.
+A simple `docker-compose` app to easily deploy an `mlflow` server, together with an nginx reverse proxy for authentication.
 
 Instructions on how to deploy can be found at the bottom of this README.
 
@@ -39,3 +39,14 @@ htpasswd -c revproxy/.htpasswd incredibleuser
 this will prompt you to enter a password.
 
 ### Backend and artifact store
+
+```
+set -a
+source .mlfenv
+docker-compose up --build -d
+```
+
+To kill
+```
+docker-compose down --remove-orphans
+```
