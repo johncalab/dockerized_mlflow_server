@@ -3,6 +3,8 @@ A simple `docker-compose` app to easily deploy an `mlflow` server, together with
 
 Step-by-step instructions on how to deploy can be found at the bottom of this README.
 
+If you are deploying to AWS, check out the `AWSREADME` file.
+
 ## what does this mean? (if you don't know what docker is...)
 The file `docker-compose.yml` tells `docker` what to do.
 If you open it, you will see two "services" specified: `mlflowui` and `nginxauth`.
