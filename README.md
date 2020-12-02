@@ -48,8 +48,9 @@ If you don't care about storing artifacts and parameters elsewhere, then swap th
 
 #### backend
 If you want to store experiment parameters (the mlflow backend) in a separate SQL server, first populate the `.mlfenv` file.
-The only variable that matters is `BACKEND_STORE_URI`.
-You can either populate that directly with a long string, or populate each chunk.
+Experiment metadata, such as parameters and metrics, are recorded in the `BACKEND_STORE_URI`.
+This can either be a local path, or a sql backend.
+A database URI looks like this: `dialect://USER:PASS@HOST:PORT/NAME`.
 
 #### artifacts
 When using a custom backend, mlflow requires a location for artifacts.
@@ -57,12 +58,9 @@ Populate the `.mlfenv` file with the address.
 The default provided will just store artifacts inside the mlflow container (in this case restarting the container will delete the artifacts).
 
 ### Launch
-Once you've populated the `.mlfenv` file with backend and artifacts, run the following commands to start the app.
-Note: if you are not using remote backend or artifacts the first two commands are not needed.
+Once you've populated the `.mlfenv` file with backend and artifacts, you're ready to go!
 
 ```
-set -a
-source .mlfenv
 docker-compose up --build -d
 ```
 

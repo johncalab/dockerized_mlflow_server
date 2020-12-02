@@ -5,11 +5,10 @@ services:
     restart: always
     build: ./mlflowui
     image: mlflowui
+    env_file:
+      - .mlfenv
     expose:
       - 5000
-    command: mlflow server --host 0.0.0.0 --default-artifact-root ${DEFAULT_ARTIFACT_ROOT} --backend-store-uri ${BACKEND_STORE_URI}
-    # to run with local backend and artifact store use below
-    # command: mlflow server --host 0.0.0.0
 
   nginxauth:
       depends_on: 
